@@ -75,7 +75,12 @@ function createContact()
 	
 	contact.displayName = $("#itxtContactName").val();
 	contact.gender = $("#irContactGender:checked").val();
-	alert(contact.displayName + contact.gender);
+	
+	var name = new ContactName();
+	name.givenName = "Rock";
+	name.familyName = "Star";
+	contact.name = name;
+
 	//contact.phoneNumber = $("#itxtContactPhone").val();
 	//contact.email = $("#itxtContactEmail").val();
 	
