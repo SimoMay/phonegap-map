@@ -71,7 +71,8 @@ function onGetGeolocationError(error)
 
 function createContact()
 {
-	var contact = navigator.service.contacts.create();
+	var contact = navigator.contacts.create();
+	
 	contact.displayName = $("#itxtContactName").val();
 	contact.gender = $("#irContactGender:checked").val();
 	alert(contact.displayName + contact.gender);
