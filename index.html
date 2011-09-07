@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html>
 <head>
-<meta name="viewport" content="width=320; user-scalable=no" />
+<meta name="viewport" content="width=device-width user-scalable=no" />
 <meta charset="utf-8">
 <title>phonegap-map-samnan9</title>
 
@@ -44,7 +44,9 @@ function onGetGeolocationSuccess(position)
 		markers: 
 		[{
 			latitude: position.coords.latitude, 
-			longitude: position.coords.longitude
+			longitude: position.coords.longitude, 
+			html: "I'm here.", 
+			popup: true
 		}], 
 		zoom: 15, 
 		icon: 

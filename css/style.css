@@ -37,18 +37,16 @@ body
 	background: #666 url(../asset/style/pattern-black.gif) repeat;
 	padding: 10px;
 	-webkit-font-smoothing: antialiased;
-	padding-bottom: 200px;
+	padding-bottom: 10px;
 }
 button
 {
-	width: 300px;
+	width: 100%;
 	height: 36px;
 }
 div
 {
-	padding: 10px;
-	width: 280px;
-	height: 36px;
+	width: 100%;
 }
 
 /*Geolocation*/
@@ -58,7 +56,7 @@ div#geolocation
 }
 div#google-map
 {
-	height: 300px;
+	height: 400px;
 	overflow: hidden;
 }
 /*=========[END]Geolocation=========*/
