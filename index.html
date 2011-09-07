@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta name="viewport" content="width=320; user-scalable=no" />
+<meta charset="utf-8">
+<title>phonegap-map-samnan9</title>
+
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
+
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAAtJ2S8Pu4_SDGelnxm7SWFhSI_yOUGzosbGtpN4Oz7go5Onf3eBTt9jlmZmKdKAIsB0uSYJApijzF-A" type="text/javascript"></script>
+<script src="jq/jquery-1.6.2.min.js" type="text/javascript"></script>
+<script src="jq/jquery.gmap-1.1.0.js" type="text/javascript"></script>
+<script src="pg/phonegap.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() 
+{
+}
+
+function getGeolocation()
+{
+	navigator.geolocation.getCurrentPosition(onGetGeolocationSuccess, onGetGeolocationError);
+}
+
+function onGetGeolocationSuccess(position)
+{
+	htmlGeolocation = "Latitude: " + position.coords.latitude + "<br />" +
+							"Longitude: " + position.coords.longitude + "<br />" +
+							"Altitude: " + position.coords.altitude + "<br />" + 
+							"Accuracy: " + position.coords.accuracy + "<br />" + 
+							"Altitude Accuracy: " + position.coords.altitudeAccuracy + "<br />" + 
+							"Heading: " + position.coords.heading + "<br />" + 
+							"Speed: " + position.coords.speed + "<br />" + 
+							"Timestamp: " + new Date(position.timestamp) + "<br />";	 
+	$("#geolocation").html(htmlGeolocation);
+	
+	options = 
+	{
+		controls: false, 
+		scrollwheel: false,
+		latitude: position.coords.latitude, 
+		longitude: position.coords.longitude, 
+		markers: 
+		[{
+			latitude: position.coords.latitude, 
+			longitude: position.coords.longitude
+		}], 
+		zoom: 15, 
+		icon: 
+		{
+       	image: "asset/img/map-marker.png", 
+			shadow: false, 
+			iconsize: [16, 24], 
+			shadowsize: false, 
+			iconanchor: [4, 19], 
+			infowindowanchor: [8, 2]
+		}
+	};
+	$("#google-map").gMap(options);
+}
+
+function onGetGeolocationError(error)
+{
+	htmlGeolocation = "Error code: " + error.code + "<br />" + 
+							"Error message: " + error.message + "<br />";
+	$("#geolocation").html(htmlGeolocation);
+}
+</script>
+
+<script type="text/javascript">
+$(function() 
+{
+	$("#btnGetGeolocation").bind("click", getGeolocation);
+});
+</script>
+</head>
+ 
+<body>
+<button id="btnGetGeolocation" class="txt-white bg-blue border-black-alpha radius-all">Get Geolocation</button>
+<div class="spacer"></div>
+<div id="geolocation" class="bg-white border-black-alpha radius-all">
+	Geolocation
+</div>
+<div class="spacer"></div>
+<div id="google-map" class="bg-white border-black-alpha radius-all">
+	Google Map
+</div> 
+
+</body>
+</html>
