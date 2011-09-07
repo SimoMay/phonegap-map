@@ -74,8 +74,8 @@ function createContact()
 	var contact = navigator.contacts.create();
 	contact.displayName = $("#itxtContactName").val();
 	contact.gender = $("#irContactGender:checked").val();
-	contact.phone = $("#itxtContactPhone").val();
-	contact.email = $("#itxtContactEmail").val();
+	//contact.phoneNumber = $("#itxtContactPhone").val();
+	//contact.email = $("#itxtContactEmail").val();
 	
 	contact.save(onCreateContactSuccess, onCreateContactError);
 }
