@@ -15,6 +15,7 @@
 <script type="text/javascript">
 var isDeviceReady = false;
 document.addEventListener("deviceready", onDeviceReady, false);
+
 function onDeviceReady() 
 {
 	isDeviceReady = true;
@@ -100,6 +101,16 @@ function onCreateContactError(error)
 			"Error message: " + error.message + "<br />";
 	$("#sContact").html(html);
 }
+
+function beep()
+{
+	navigator.notification.beep(3);
+}
+
+function vibrate()
+{
+		navigator.notification.vibrate(1000);
+}
 </script>
 
 <script type="text/javascript">
@@ -107,6 +118,8 @@ $(function()
 {
 	$("#btnGetGeolocation").bind("click", getGeolocation);
 	$("#btnCreateContact").bind("click", createContact);
+	$("#btnBeep").bind("click", beep);
+	$("#btnVibrate").bind("click", vibrate);
 });
 </script>
 </head>
@@ -124,6 +137,15 @@ $(function()
 <div id="dGoogle-map" class="txt-white bg-black-alpha border-white-alpha radius-all shadow-white-alpha">
 	Google Map
 </div>
+<div class="spacer-x"></div>
+
+<button id="btnBeep" class="txt-black bg-purple border-black-alpha radius-all">
+	Beep
+</button>
+<div class="spacer"></div>
+<button id="btnVibrate" class="txt-black bg-brown border-black-alpha radius-all">
+	Vibrate
+</button>
 <div class="spacer-x"></div>
 
 <div id="dContact" class="txt-white bg-black-alpha border-white-alpha radius-all shadow-white-alpha">
